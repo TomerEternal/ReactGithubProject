@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactGithubProject.Service", "ReactGithubProject.Service\ReactGithubProject.Service.csproj", "{9E1CE7AF-0E80-42F9-8C00-5CAE3F717F95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E1CE7AF-0E80-42F9-8C00-5CAE3F717F95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E1CE7AF-0E80-42F9-8C00-5CAE3F717F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E1CE7AF-0E80-42F9-8C00-5CAE3F717F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E1CE7AF-0E80-42F9-8C00-5CAE3F717F95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {79C3F06C-2163-4987-8506-B8AF8FFE55F0}
+	EndGlobalSection
+EndGlobal
