@@ -35,10 +35,12 @@ export class App extends React.Component<any, any> {
     render() {
         return (
             <React.Fragment>
+                <div style={{height:'100%',width:'100%'}}>
                 <RepositioresContext.Provider value={this.state}>
                     <RepositoryNameForm />
                     <RepositoryGallery/>
                 </RepositioresContext.Provider>
+                    </div>
             </React.Fragment>
         );
     }
