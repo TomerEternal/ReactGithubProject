@@ -1,13 +1,9 @@
 ﻿import React = require("react");
 import { RepositioresContext } from "../contexts/repositories-context";
+import { RepositoryGallery } from "./repository-gallery";
 
 import { RepositoryNameForm } from "./repository-name-form";
-
-
-// 
-// 
-// 
-// 
+import { GithubService } from "../infrastructure/GithubService";
 
 export class App extends React.Component<any, any> {
 
@@ -15,24 +11,35 @@ export class App extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
 
-        this.searchRepository = this.searchRepository.bind(this);
+
+        this.githubService = new GithubService();
 
         this.state = {
-            searchedName: null,
+            repositoryName: null,
+            repositories: [],
             search: this.searchRepository
         }
     }
 
-    searchRepository(searchedName: string) {
-        this.setState({ searchedName: searchedName })
+    githubService: GithubService;
+
+    searchRepository = async (repositoryName: string) => {
+
+        const response = await this.githubService
+            .getRepositories(repositoryName)
+            .then(response => response.json());
+
+        this.setState({ repositoryName: repositoryName, repositories: response.items }, () => console.log(this))
     }
 
     render() {
         return (
-            <RepositioresContext.Provider value={this.state}>
-                <RepositoryNameForm />
-            </RepositioresContext.Provider>
-
+            <React.Fragment>
+                <RepositioresContext.Provider value={this.state}>
+                    <RepositoryNameForm />
+                    <RepositoryGallery/>
+                </RepositioresContext.Provider>
+            </React.Fragment>
         );
     }
 }

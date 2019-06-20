@@ -4,8 +4,7 @@ import { App } from "./components/app";
 import { RepositioresContext } from "./contexts/repositories-context";
 
 ReactDOM.render(
-    <div>
-        <App />
-    </div>,
-    document.getElementById("well-well-well")
-);
+    <App />
+    ,
+    document.getElementById("react-app")
+); 

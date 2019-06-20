@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var ReactDOM = require("react-dom");
-var RepositoryNameForm_1 = require("./components/RepositoryNameForm");
+var app_1 = require("./components/app");
 ReactDOM.render(React.createElement("div", null,
-    React.createElement(RepositoryNameForm_1.RepositoryNameForm, null)), document.getElementById("well-well-well"));
+    React.createElement(app_1.App, null)), document.getElementById("well-well-well"));
 //# sourceMappingURL=index.js.map
