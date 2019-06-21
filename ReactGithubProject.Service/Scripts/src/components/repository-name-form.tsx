@@ -2,15 +2,13 @@
 import { Jumbotron, Button, Form, FormGroup, Label, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 import { RepositioresContext } from "../contexts/repositories-context";
 
-
 export interface RepositoryNameFormProps{
-    search(repositoryName: string, page?: number): void
+    search(repositoryName:string,page?:number): void,
 }
 
 export class RepositoryNameForm extends React.Component<RepositoryNameFormProps, any> {
 
     static contextType = RepositioresContext;
-
 
 
     constructor(props: RepositoryNameFormProps) {

@@ -7,18 +7,16 @@ import { GithubService } from "../infrastructure/repositories/GithubService";
 import { BookmarkingService } from "../infrastructure/bookmarking/BookmarkingService";
 import { RepositoryModel } from "../infrastructure/bookmarking/RepositoryModel";
 
-export interface SearchProps {
-    bookmarkedRepositories: RepositoryModel[],
-}
-
 export interface SearchState {
     repositories: RepositoryModel[],
 }
 
-export class Search extends React.Component<SearchProps, any> {
+export class Search extends React.Component<any, SearchState> {
+
+    static contextType = RepositioresContext
 
 
-    constructor(props: SearchProps) {
+    constructor(props: SearchState) {
         super(props);
         this.state={
             repositories:[]
@@ -44,7 +42,7 @@ export class Search extends React.Component<SearchProps, any> {
         return (
             <React.Fragment>
                 <RepositoryNameForm search={this.searchRepository} />
-                <RepositoryGallery repositories={this.state.repositories} bookmarkedRepositories={this.props.bookmarkedRepositories} />
+                <RepositoryGallery repositories={this.state.repositories} />
             </React.Fragment>
 
         );

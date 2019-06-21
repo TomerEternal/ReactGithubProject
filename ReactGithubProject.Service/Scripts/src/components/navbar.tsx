@@ -6,9 +6,17 @@ import { RepositoryNameForm } from "./repository-name-form";
 import { GithubService } from "../infrastructure/repositories/GithubService";
 import { BookmarkingService } from "../infrastructure/bookmarking/BookmarkingService";
 import { RepositoryModel } from "../infrastructure/bookmarking/RepositoryModel";
+import { NavbarItem, Page } from "./navbar-item";
 
-export class Navbar extends React.Component<any, any> {
 
+
+
+interface NavbarProps {
+    activePage: Page,
+    setPage(page: Page): void
+}
+
+export class Navbar extends React.Component<NavbarProps, any> {
 
     constructor(props: any) {
         super(props);
@@ -17,18 +25,14 @@ export class Navbar extends React.Component<any, any> {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className="navbar navbar-expand navbar-dark bg-dark">
                 <span className="navbar-brand">React Github Project</span>
-                <div className="collapse navbar-collapse">
                     <ul className="navbar-nav">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Search</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Bookmarks</a>
-                        </li>
+
+                        <NavbarItem text="Search" page={Page.search} activePage={this.props.activePage} setPage={this.props.setPage} />
+                        <NavbarItem text="Bookmarks" page={Page.bookmarks} activePage={this.props.activePage} setPage={this.props.setPage} />
+
                     </ul>
-                </div>
             </nav>
         );
     }

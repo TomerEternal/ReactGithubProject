@@ -6,7 +6,6 @@ import { RepositoryModel } from "../infrastructure/bookmarking/RepositoryModel";
 
 interface GalleryProps{
     repositories:   RepositoryModel[],
-    bookmarkedRepositories: RepositoryModel[],
 }
 
 export class RepositoryGallery extends React.Component<GalleryProps, any> {
@@ -17,15 +16,6 @@ export class RepositoryGallery extends React.Component<GalleryProps, any> {
         super(props);
     }
 
-    createModel = (repository:any)=>{
-        return {
-            name:repository.name,
-            author:repository.owner.login,
-            authorAvatarUrl:repository.owner.avatar_url,
-            url:repository.html_url,
-        } as RepositoryModel
-    }
-
     render() {
         return (
                         <div className="container">
@@ -33,8 +23,8 @@ export class RepositoryGallery extends React.Component<GalleryProps, any> {
                                 {this.props.repositories.map((repository: any) =>
                                     <div className="col-md-4 my-3">
                                         <RepositoryGalleryItem
-                                        bookmarkedRepositories={this.props.bookmarkedRepositories}
-                                        model={this.createModel(repository)}
+                                        bookmarkedRepositories={this.context.bookmarkedRepositories}
+                                        model={repository}
                                         />
                                     </div>
                                 )}
