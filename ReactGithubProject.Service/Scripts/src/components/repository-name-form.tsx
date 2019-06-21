@@ -1,17 +1,13 @@
 ﻿import React = require("react");
-import { RepositioresContext } from "../contexts/repositories-context";
 import { Jumbotron, Button, Form, FormGroup, Label, Input, InputGroup, InputGroupAddon } from 'reactstrap';
+import { RepositioresContext } from "../contexts/repositories-context";
+
+export class RepositoryNameForm extends React.Component<any, any> {
+
+    static contextType = RepositioresContext;
 
 
-interface RepositoryNameFormProps {
-    search(repositoryName: string, page?: number): void
-}
-
-export class RepositoryNameForm extends React.Component<RepositoryNameFormProps, any> {
-
-    static contextType = RepositioresContext
-
-    constructor(props: RepositoryNameFormProps) {
+    constructor(props: any) {
         super(props);
         //since this is a search component it only needs to keep the current name
         this.state = { repositoryName: '' };
@@ -24,7 +20,7 @@ export class RepositoryNameForm extends React.Component<RepositoryNameFormProps,
 
     handleSubmit = (event: any) => {
         event.preventDefault();
-        this.props.search(this.state.repositoryName)
+        this.context.search(this.state.repositoryName)
     }
 
     render() {
@@ -44,7 +40,7 @@ export class RepositoryNameForm extends React.Component<RepositoryNameFormProps,
                             <InputGroup>
                                 <Input value={this.state.repositoryName} onChange={this.handleChange} type="text" placeholder="please enter a github repository name" />
                                 <InputGroupAddon addonType="append">
-                                    <Button>Search</Button>
+                                    <Button>Search</Button> 
                                 </InputGroupAddon>
                             </InputGroup>
                         </FormGroup>

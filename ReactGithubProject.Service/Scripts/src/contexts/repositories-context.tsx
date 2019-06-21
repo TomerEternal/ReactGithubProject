@@ -5,6 +5,7 @@ import { RepositoryModel } from "../infrastructure/bookmarking/RepositoryModel";
 
 interface RepositoriesContextParams{
     refreshBookmarkedRepositories():void,
+    search(repositoryName: string, page?: number): void
 }
 
 export const RepositioresContext = React.createContext<any>(null);
