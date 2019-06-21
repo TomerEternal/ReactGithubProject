@@ -1,5 +1,5 @@
 ﻿import React = require("react");
-import { RepositoriesProvider } from "../contexts/repositories-context";
+import { BookmarkedRepositoriesProvider } from "../contexts/bookmarked-repositories-context";
 import { RepositoryGallery } from "./repository-gallery";
 import { Navbar } from "./navbar";
 import { Search } from "./search";
@@ -36,7 +36,7 @@ export class App extends React.Component<any, AppState> {
             <React.Fragment>
                 <div className="h-100 w-100">
                     <Navbar setPage={this.setPage} activePage={this.state.activePage} />
-                    <RepositoriesProvider>{(() => {
+                    <BookmarkedRepositoriesProvider>{(() => {
                         switch (this.state.activePage) {
                             case Page.search:
                                 return <Search />
@@ -45,7 +45,7 @@ export class App extends React.Component<any, AppState> {
                             default:
                         }
                     })()}
-                    </RepositoriesProvider>
+                    </BookmarkedRepositoriesProvider>
                 </div>
             </React.Fragment>
         );

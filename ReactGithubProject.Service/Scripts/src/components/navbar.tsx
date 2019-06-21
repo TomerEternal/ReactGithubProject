@@ -1,15 +1,5 @@
 ﻿import React = require("react");
-import { RepositioresContext } from "../contexts/repositories-context";
-import { RepositoryGallery } from "./repository-gallery";
-
-import { RepositoryNameForm } from "./repository-name-form";
-import { GithubService } from "../infrastructure/repositories/GithubService";
-import { BookmarkingService } from "../infrastructure/bookmarking/BookmarkingService";
-import { RepositoryModel } from "../infrastructure/bookmarking/RepositoryModel";
 import { NavbarItem, Page } from "./navbar-item";
-
-
-
 
 interface NavbarProps {
     activePage: Page,

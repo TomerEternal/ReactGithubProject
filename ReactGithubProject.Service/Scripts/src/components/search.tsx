@@ -1,5 +1,4 @@
 ﻿import React = require("react");
-import { RepositioresContext } from "../contexts/repositories-context";
 import { RepositoryGallery } from "./repository-gallery";
 
 import { RepositoryNameForm } from "./repository-name-form";
@@ -12,9 +11,6 @@ export interface SearchState {
 }
 
 export class Search extends React.Component<any, SearchState> {
-
-    static contextType = RepositioresContext
-
 
     constructor(props: SearchState) {
         super(props);

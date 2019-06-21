@@ -1,8 +1,9 @@
 ﻿import React = require("react");
-import { RepositioresContext } from "../contexts/repositories-context";
 import { Card, CardBody, Button, CardTitle, CardText, CardFooter, CardImg } from 'reactstrap';
 import { RepositoryModel } from "../infrastructure/bookmarking/RepositoryModel";
 import { BookmarkingService } from "../infrastructure/bookmarking/BookmarkingService";
+import { BookmarkedRepositioresContext } from "../contexts/bookmarked-repositories-context";
+
 
 
 interface RepositoryGalleryItemProps {
@@ -12,7 +13,7 @@ interface RepositoryGalleryItemProps {
 
 export class RepositoryGalleryItem extends React.Component<RepositoryGalleryItemProps, any> {
 
-    static contextType = RepositioresContext
+    static contextType = BookmarkedRepositioresContext
 
 
     constructor(props: RepositoryGalleryItemProps) {

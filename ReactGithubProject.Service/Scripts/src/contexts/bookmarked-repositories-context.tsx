@@ -2,22 +2,22 @@ import React = require("react");
 import { RepositoryModel } from "../infrastructure/bookmarking/RepositoryModel";
 import { BookmarkingService } from "../infrastructure/bookmarking/BookmarkingService";
 
-// a repositories context incahrge of sharing the repository data between components
+// a component for giving context 
 
-interface RepositoriesContextParams {
+interface BookmarkedRepositoriesContextParams {
     refreshBookmarkedRepositories(): void,
     bookmarkedRepositories: RepositoryModel[],
 }
 
-export const RepositioresContext = React.createContext<RepositoriesContextParams>(null);
+export const BookmarkedRepositioresContext = React.createContext<BookmarkedRepositoriesContextParams>(null);
 
 
-interface RepositoriesProviderState{
+interface BookmarkedRepositoriesProviderState{
     bookmarkedRepositories: RepositoryModel[],
 
 }
 
-export class RepositoriesProvider  extends React.Component<any,RepositoriesProviderState> {
+export class BookmarkedRepositoriesProvider  extends React.Component<any,BookmarkedRepositoriesProviderState> {
 
     constructor(props: any) {
         super(props);
@@ -36,12 +36,12 @@ export class RepositoriesProvider  extends React.Component<any,RepositoriesProvi
 
     render() {
         return (
-            <RepositioresContext.Provider value={{
+            <BookmarkedRepositioresContext.Provider value={{
                 refreshBookmarkedRepositories: this.refreshBookmarkedRepositories,
                 bookmarkedRepositories:this.state.bookmarkedRepositories
             }}>
                 {this.props.children}
-            </RepositioresContext.Provider>
+            </BookmarkedRepositioresContext.Provider>
         )
     }
 }

@@ -1,5 +1,4 @@
 ﻿import React = require("react");
-import { RepositioresContext } from "../contexts/repositories-context";
 import { RepositoryGallery } from "./repository-gallery";
 
 import { RepositoryNameForm } from "./repository-name-form";
