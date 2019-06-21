@@ -1,6 +1,7 @@
 ﻿import React = require("react");
 import { RepositioresContext } from "../contexts/repositories-context";
 import { RepositoryGallery } from "./repository-gallery";
+import { Navbar } from "./navbar";
 
 import { RepositoryNameForm } from "./repository-name-form";
 import { GithubService } from "../infrastructure/repositories/GithubService";
@@ -8,7 +9,7 @@ import { BookmarkingService } from "../infrastructure/bookmarking/BookmarkingSer
 import { RepositoryModel } from "../infrastructure/bookmarking/RepositoryModel";
 
 interface AppState {
-    repositoryName: string,
+    repositoryName: string,   
     repositories: RepositoryModel[],
     bookmarkedRepositories: RepositoryModel[],
 }
@@ -54,6 +55,7 @@ export class App extends React.Component<any, AppState> {
         return (
             <React.Fragment>
                 <div className="h-100 w-100">
+                    <Navbar />
                     <RepositioresContext.Provider value={{
                         refreshBookmarkedRepositories: this.refreshBookmarkedRepositories
                     }}>
