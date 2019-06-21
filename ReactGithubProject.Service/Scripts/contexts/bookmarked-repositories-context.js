@@ -1,4 +1,17 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -35,35 +48,41 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// an infrastructure service incharge of fetching data from outside the app
-var GithubService = /** @class */ (function () {
-    function GithubService() {
-    }
-    //added option for paging, incase it will be needed in the future
-    GithubService.prototype.getRepositories = function (repositoryName, page) {
-        if (page === void 0) { page = 0; }
-        return __awaiter(this, void 0, void 0, function () {
-            var res;
+var React = require("react");
+var BookmarkingService_1 = require("../infrastructure/bookmarking/BookmarkingService");
+exports.BookmarkedRepositioresContext = React.createContext(null);
+// a component incharge of managing the bookmarks
+// any components wrapped by this provider will be able the bookmarked repositories thanks to contextAPI
+var BookmarkedRepositoriesProvider = /** @class */ (function (_super) {
+    __extends(BookmarkedRepositoriesProvider, _super);
+    function BookmarkedRepositoriesProvider(props) {
+        var _this = _super.call(this, props) || this;
+        _this.bookmarkingService = new BookmarkingService_1.BookmarkingService();
+        _this.refreshBookmarkedRepositories = function () { return __awaiter(_this, void 0, void 0, function () {
+            var bookmarkedRepositories;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, fetch("https://api.github.com/search/repositories?q=" + repositoryName + "&page=" + page + "&per_page=12")];
+                    case 0: return [4 /*yield*/, this.bookmarkingService
+                            .getBookmarkedRepositories()];
                     case 1:
-                        res = _a.sent();
-                        return [4 /*yield*/, res.json()];
-                    case 2: return [2 /*return*/, (_a.sent()).items
-                            .map(function (repository) {
-                            return {
-                                name: repository.name,
-                                author: repository.owner.login,
-                                authorAvatarUrl: repository.owner.avatar_url,
-                                url: repository.html_url,
-                            };
-                        })];
+                        bookmarkedRepositories = (_a.sent()) || [];
+                        this.setState({ bookmarkedRepositories: bookmarkedRepositories, });
+                        return [2 /*return*/];
                 }
             });
-        });
+        }); };
+        _this.state = {
+            bookmarkedRepositories: [],
+        };
+        return _this;
+    }
+    BookmarkedRepositoriesProvider.prototype.render = function () {
+        return (React.createElement(exports.BookmarkedRepositioresContext.Provider, { value: {
+                refreshBookmarkedRepositories: this.refreshBookmarkedRepositories,
+                bookmarkedRepositories: this.state.bookmarkedRepositories
+            } }, this.props.children));
     };
-    return GithubService;
-}());
-exports.GithubService = GithubService;
-//# sourceMappingURL=GithubService.js.map
+    return BookmarkedRepositoriesProvider;
+}(React.Component));
+exports.BookmarkedRepositoriesProvider = BookmarkedRepositoriesProvider;
+//# sourceMappingURL=bookmarked-repositories-context.js.map

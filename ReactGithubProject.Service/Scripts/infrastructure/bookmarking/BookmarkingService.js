@@ -39,7 +39,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var BookmarkingService = /** @class */ (function () {
     function BookmarkingService() {
     }
-    //added option for paging, incase it will be needed in the future
     BookmarkingService.prototype.getBookmarkedRepositories = function () {
         return __awaiter(this, void 0, void 0, function () {
             var res;

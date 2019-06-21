@@ -33,7 +33,7 @@ export class App extends React.Component<any, AppState> {
     render() {
         return (
             <React.Fragment>
-                <div className="h-100 w-100">
+                <div className="h-100 w-100 d-flex flex-column">
                     <Navbar setPage={this.setPage} activePage={this.state.activePage} />
                     <BookmarkedRepositoriesProvider>{(() => {
 
@@ -48,6 +48,11 @@ export class App extends React.Component<any, AppState> {
 
                     })()}
                     </BookmarkedRepositoriesProvider>
+                    <footer className="mt-auto py-3 bg-white">
+                        <div className="container">
+                            <span className="text-muted">Made by Tomer H.</span>
+                        </div>
+                    </footer>
                 </div>
             </React.Fragment>
         );
