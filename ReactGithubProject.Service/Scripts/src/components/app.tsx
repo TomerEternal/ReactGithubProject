@@ -3,7 +3,9 @@ import { RepositioresContext } from "../contexts/repositories-context";
 import { RepositoryGallery } from "./repository-gallery";
 
 import { RepositoryNameForm } from "./repository-name-form";
-import { GithubService } from "../infrastructure/GithubService";
+import { GithubService } from "../infrastructure/repositories/GithubService";
+import { BookmarkingService } from "../infrastructure/bookmarking/BookmarkingService";
+
 
 export class App extends React.Component<any, any> {
 
@@ -11,36 +13,50 @@ export class App extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
 
-
-        this.githubService = new GithubService();
-
         this.state = {
             repositoryName: null,
             repositories: [],
-            search: this.searchRepository
+            bookmarkedRepositories: [],
+            search: this.searchRepository,
+            getBookmarkedRepositories: this.getBookmarkedRepositories,
         }
+
+        this.getBookmarkedRepositories();
     }
 
-    githubService: GithubService;
+    githubService: GithubService = new GithubService();
 
-    searchRepository = async (repositoryName: string) => {
+    bookmarkingService: BookmarkingService = new BookmarkingService();
 
-        const response = await this.githubService
-            .getRepositories(repositoryName)
-            .then(response => response.json());
+    searchRepository = async (repositoryName: string, page: number = 1) => {
+        if (repositoryName) {
+            const repositories = await this.githubService
+                .getRepositories(repositoryName, page)
+            this.setState(
+                {
+                    repositoryName: repositoryName,
+                    repositories: repositories || [],
+                }
+            ) 
+        }
 
-        this.setState({ repositoryName: repositoryName, repositories: response.items }, () => console.log(this))
+    }
+
+    getBookmarkedRepositories = async () => {
+        const bookmarkedRepositories = await this.bookmarkingService
+            .getBookmarkedRepositories() || []
+        this.setState({ bookmarkedRepositories: bookmarkedRepositories, })
     }
 
     render() {
         return (
             <React.Fragment>
-                <div style={{height:'100%',width:'100%'}}>
-                <RepositioresContext.Provider value={this.state}>
-                    <RepositoryNameForm />
-                    <RepositoryGallery/>
-                </RepositioresContext.Provider>
-                    </div>
+                <div className="h-100 w-100">
+                    <RepositioresContext.Provider value={this.state}>
+                        <RepositoryNameForm />
+                        <RepositoryGallery />
+                    </RepositioresContext.Provider>
+                </div>
             </React.Fragment>
         );
     }

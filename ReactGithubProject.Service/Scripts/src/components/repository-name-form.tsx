@@ -9,9 +9,11 @@ export class RepositoryNameForm extends React.Component<any, any> {
 
     constructor(props: any) {
         super(props);
+        //since this is a search component it only needs to keep the current name
         this.state = { repositoryName: '' };
     }
 
+    //basic controlled component input pattern
     handleChange = (event: any) => {
         this.setState({ repositoryName: event.target.value });
     }
@@ -28,20 +30,13 @@ export class RepositoryNameForm extends React.Component<any, any> {
         return (
             <React.Fragment>
                 <div className="jumbotron position-relative">
+                    {/* video background */}
                     <video
-                        style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            bottom: 0,
-                            objectFit: 'cover',
-                            width: '100%',
-                            height: '100%',
-                        }}
+                    className="card-img-overlay p-0 h-100 w-100"
+                        style={{objectFit: 'cover'}}
                         id="video-background" muted={true} autoPlay={true} loop={true}
                     >
-                        <source src={`https://gcs-vimeo.akamaized.net/exp=1561079824~acl=%2A%2F1212112677.mp4%2A~hmac=488ed4dd2b4fd7a87e2905ebaaf2b7f4324d0b607486c0414608b571f1a81125/vimeo-prod-skyfire-std-us/01/2836/12/314181352/1212112677.mp4?download=1&filename=Pexels+Videos+1851190.mp4`} type="video/mp4" />
+                        <source src={`videos/earth.mp4`} type="video/mp4" />
                     </video>
                     <Form onSubmit={this.handleSubmit}>
                         <FormGroup >
@@ -49,10 +44,8 @@ export class RepositoryNameForm extends React.Component<any, any> {
                                 <Input value={this.state.repositoryName} onChange={this.handleChange} type="text" placeholder="please enter a github repository name" />
                                 <InputGroupAddon addonType="append">
                                     <Button>Search</Button>
-                                </InputGroupAddon>
+                                </InputGroupAddon> 
                             </InputGroup>
-
-
                         </FormGroup>
                     </Form>
                 </div>

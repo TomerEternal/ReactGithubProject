@@ -12,23 +12,26 @@ export class RepositoryGallery extends React.Component<any, any> {
 
     render() {
         return (
-            <React.Fragment>
-                <div className="container">
+            <RepositioresContext.Consumer>
+                {
+                    (({ repositories }) => (
 
-                    <div className="row">
-                        {this.context.repositories.map((repository: any) =>
-                            <div className="col-md-4 my-3">
-                                <RepositoryGalleryItem 
-                                repositoryUrl={repository.html_url}
-                                repositoryAuthorAvatarUrl={repository.owner.avatar_url} 
-                                repositoryName={repository.name}
-                                 repositoryAuthor={repository.owner.login}
-                                  />
+                        <div className="container">
+                            <div className="row">
+                                {this.context.repositories.map((repository: any) =>
+                                    <div className="col-md-4 my-3">
+                                        <RepositoryGalleryItem
+                                            name={repository.name}
+                                            author={repository.owner.login}
+                                            authorAvatarUrl={repository.owner.avatar_url}
+                                            url={repository.html_url}
+                                        />
+                                    </div>
+                                )}
                             </div>
-                        )}
-                    </div>
-                </div>
-            </React.Fragment>
+                        </div>
+                    ))}
+            </RepositioresContext.Consumer>
         );
     }
 }  

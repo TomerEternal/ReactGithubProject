@@ -67,3 +67,5 @@ C:\Users\Tomer Hirshfeld\source\repos\ReactGithubProject\ReactGithubProject.Serv
 C:\Users\Tomer Hirshfeld\source\repos\ReactGithubProject\ReactGithubProject.Service\obj\Debug\ReactGithubProject.Service.csproj.CopyComplete
 C:\Users\Tomer Hirshfeld\source\repos\ReactGithubProject\ReactGithubProject.Service\obj\Debug\ReactGithubProject.Service.dll
 C:\Users\Tomer Hirshfeld\source\repos\ReactGithubProject\ReactGithubProject.Service\obj\Debug\ReactGithubProject.Service.pdb
+C:\Users\Tomer Hirshfeld\source\repos\ReactGithubProject\ReactGithubProject.Service\bin\Newtonsoft.Json.dll
+C:\Users\Tomer Hirshfeld\source\repos\ReactGithubProject\ReactGithubProject.Service\bin\Newtonsoft.Json.xml
