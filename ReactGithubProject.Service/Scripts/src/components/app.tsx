@@ -5,13 +5,11 @@ import { Navbar } from "./navbar";
 import { Search } from "./search";
 
 import { RepositoryNameForm } from "./repository-name-form";
-import { GithubService } from "../infrastructure/repositories/GithubService";
 import { BookmarkingService } from "../infrastructure/bookmarking/BookmarkingService";
 import { RepositoryModel } from "../infrastructure/bookmarking/RepositoryModel";
 
 interface AppState {
     repositoryName: string,
-    repositories: RepositoryModel[],
     bookmarkedRepositories: RepositoryModel[],
 }
 
@@ -23,28 +21,13 @@ export class App extends React.Component<any, AppState> {
 
         this.state = {
             repositoryName: null,
-            repositories: [],
             bookmarkedRepositories: [],
         }
     }
 
-    githubService: GithubService = new GithubService();
 
     bookmarkingService: BookmarkingService = new BookmarkingService();
 
-    searchRepository = async (repositoryName: string, page: number = 1) => {
-        if (repositoryName) {
-            const repositories = await this.githubService
-                .getRepositories(repositoryName, page)
-            this.setState(
-                {
-                    repositoryName: repositoryName,
-                    repositories: repositories || [],
-                }
-            )
-        }
-
-    }
 
     refreshBookmarkedRepositories = async () => {
         const bookmarkedRepositories = await this.bookmarkingService
@@ -59,9 +42,8 @@ export class App extends React.Component<any, AppState> {
                     <Navbar />
                     <RepositioresContext.Provider value={{
                         refreshBookmarkedRepositories: this.refreshBookmarkedRepositories,
-                        search:this.searchRepository
                     }}>
-                        <Search repositories={this.state.repositories} bookmarkedRepositories={this.state.bookmarkedRepositories} />
+                        <Search bookmarkedRepositories={this.state.bookmarkedRepositories} />
                     </RepositioresContext.Provider>
                 </div>
             </React.Fragment>

@@ -2,12 +2,18 @@
 import { Jumbotron, Button, Form, FormGroup, Label, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 import { RepositioresContext } from "../contexts/repositories-context";
 
-export class RepositoryNameForm extends React.Component<any, any> {
+
+export interface RepositoryNameFormProps{
+    search(repositoryName: string, page?: number): void
+}
+
+export class RepositoryNameForm extends React.Component<RepositoryNameFormProps, any> {
 
     static contextType = RepositioresContext;
 
 
-    constructor(props: any) {
+
+    constructor(props: RepositoryNameFormProps) {
         super(props);
         //since this is a search component it only needs to keep the current name
         this.state = { repositoryName: '' };
@@ -20,7 +26,7 @@ export class RepositoryNameForm extends React.Component<any, any> {
 
     handleSubmit = (event: any) => {
         event.preventDefault();
-        this.context.search(this.state.repositoryName)
+        this.props.search(this.state.repositoryName)
     }
 
     render() {
