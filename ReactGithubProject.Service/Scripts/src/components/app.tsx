@@ -1,19 +1,17 @@
 ﻿import React = require("react");
 import { BookmarkedRepositoriesProvider } from "../contexts/bookmarked-repositories-context";
-import { RepositoryGallery } from "./repository-gallery";
-import { Navbar } from "./navbar";
 import { Search } from "./search";
 import { Bookmarks } from "./bookmarks";
 
 
-import { RepositoryNameForm } from "./repository-name-form";
 import { BookmarkingService } from "../infrastructure/bookmarking/BookmarkingService";
 import { RepositoryModel } from "../infrastructure/bookmarking/RepositoryModel";
-import { Page } from "./navbar-item";
+import { Page } from "./navigation/navbar-item";
+import { Navbar} from "./navigation/navbar";
 
 interface AppState {
     activePage: Page,
-}
+}  
 
 export class App extends React.Component<any, AppState> {
 
@@ -24,6 +22,7 @@ export class App extends React.Component<any, AppState> {
         this.state = {
             activePage: Page.search,
         }
+
     }
 
 
@@ -37,6 +36,8 @@ export class App extends React.Component<any, AppState> {
                 <div className="h-100 w-100">
                     <Navbar setPage={this.setPage} activePage={this.state.activePage} />
                     <BookmarkedRepositoriesProvider>{(() => {
+
+                        //renders the appropriate page based on the currently active page
                         switch (this.state.activePage) {
                             case Page.search:
                                 return <Search />
@@ -44,6 +45,7 @@ export class App extends React.Component<any, AppState> {
                                 return <Bookmarks />
                             default:
                         }
+
                     })()}
                     </BookmarkedRepositoriesProvider>
                 </div>

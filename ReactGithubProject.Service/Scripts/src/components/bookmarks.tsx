@@ -1,12 +1,12 @@
 ﻿import React = require("react");
 import { BookmarkedRepositioresContext } from "../contexts/bookmarked-repositories-context";
-import { RepositoryGallery } from "./repository-gallery";
 
-import { RepositoryNameForm } from "./repository-name-form";
 import { GithubService } from "../infrastructure/repositories/GithubService";
 import { BookmarkingService } from "../infrastructure/bookmarking/BookmarkingService";
 import { RepositoryModel } from "../infrastructure/bookmarking/RepositoryModel";
+import {RepositoryGallery} from "./repository/repository-gallery"
 
+// bookmarks page
 export class Bookmarks extends React.Component<any, any> {
 
     static contextType = BookmarkedRepositioresContext
@@ -18,6 +18,7 @@ export class Bookmarks extends React.Component<any, any> {
     }
 
     componentDidMount() {
+        //this ensures the bookmarks are loaded to the context when the page loads
         this.context.refreshBookmarkedRepositories();
       }
 

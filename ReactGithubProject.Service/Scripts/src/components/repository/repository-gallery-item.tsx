@@ -1,27 +1,25 @@
 ﻿import React = require("react");
 import { Card, CardBody, Button, CardTitle, CardText, CardFooter, CardImg } from 'reactstrap';
-import { RepositoryModel } from "../infrastructure/bookmarking/RepositoryModel";
-import { BookmarkingService } from "../infrastructure/bookmarking/BookmarkingService";
-import { BookmarkedRepositioresContext } from "../contexts/bookmarked-repositories-context";
-
-
+import { RepositoryModel } from "../../infrastructure/bookmarking/RepositoryModel";
+import { BookmarkedRepositioresContext } from "../../contexts/bookmarked-repositories-context";
+import { BookmarkingService } from "../../infrastructure/bookmarking/BookmarkingService";
 
 interface RepositoryGalleryItemProps {
     model: RepositoryModel,
     bookmarkedRepositories: RepositoryModel[],
 }
 
+//renders single repository
 export class RepositoryGalleryItem extends React.Component<RepositoryGalleryItemProps, any> {
 
     static contextType = BookmarkedRepositioresContext
+
+    bookmarkingService : BookmarkingService = new BookmarkingService();
 
 
     constructor(props: RepositoryGalleryItemProps) {
         super(props);
     }
-
-    bookmarkingService: BookmarkingService = new BookmarkingService();
-
 
     checkIfBookmarked = (repositoryModel: RepositoryModel[]) => {
         const bookmarkedRepository = repositoryModel
@@ -40,7 +38,7 @@ export class RepositoryGalleryItem extends React.Component<RepositoryGalleryItem
 
     render() {
         return (
-            <Card inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
+            <div className="card border border-dark bg-dark text-white">
                 <img src={this.props.model.authorAvatarUrl} className="card-img-top bg-white" />
                 <CardBody>
                     <a href={this.props.model.url}>
@@ -68,7 +66,7 @@ export class RepositoryGalleryItem extends React.Component<RepositoryGalleryItem
                         </div>
                     </CardText>
                 </CardFooter>
-            </Card>
+            </div>
         );
     }
-}
+}  

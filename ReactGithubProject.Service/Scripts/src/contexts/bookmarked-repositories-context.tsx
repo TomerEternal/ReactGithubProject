@@ -2,7 +2,6 @@ import React = require("react");
 import { RepositoryModel } from "../infrastructure/bookmarking/RepositoryModel";
 import { BookmarkingService } from "../infrastructure/bookmarking/BookmarkingService";
 
-// a component for giving context 
 
 interface BookmarkedRepositoriesContextParams {
     refreshBookmarkedRepositories(): void,
@@ -17,6 +16,8 @@ interface BookmarkedRepositoriesProviderState{
 
 }
 
+// a component incharge of managing the bookmarks
+// any components wrapped by this provider will be able the bookmarked repositories thanks to contextAPI
 export class BookmarkedRepositoriesProvider  extends React.Component<any,BookmarkedRepositoriesProviderState> {
 
     constructor(props: any) {

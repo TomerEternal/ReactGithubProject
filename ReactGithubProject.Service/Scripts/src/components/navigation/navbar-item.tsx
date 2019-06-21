@@ -1,11 +1,4 @@
 ﻿import React = require("react");
-import { RepositoryGallery } from "./repository-gallery";
-
-import { RepositoryNameForm } from "./repository-name-form";
-import { GithubService } from "../infrastructure/repositories/GithubService";
-import { BookmarkingService } from "../infrastructure/bookmarking/BookmarkingService";
-import { RepositoryModel } from "../infrastructure/bookmarking/RepositoryModel";
-
 
 export enum Page {
     search,
@@ -19,6 +12,7 @@ interface NavbarItemProps {
     setPage(page: Page): void
 }
 
+//renders a single nav button
 export class NavbarItem extends React.Component<NavbarItemProps, any> {
 
     constructor(props: any) {

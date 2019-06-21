@@ -6,6 +6,7 @@ interface NavbarProps {
     setPage(page: Page): void
 }
 
+//renders all nav buttons
 export class Navbar extends React.Component<NavbarProps, any> {
 
     constructor(props: any) {

@@ -1,10 +1,11 @@
 ﻿import React = require("react");
 import { Jumbotron, Button, Form, FormGroup, Label, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 
-export interface RepositoryNameFormProps{
-    search(repositoryName:string,page?:number): void,
+export interface RepositoryNameFormProps {
+    search(repositoryName: string, page?: number): void,
 }
 
+//search form
 export class RepositoryNameForm extends React.Component<RepositoryNameFormProps, any> {
 
     constructor(props: RepositoryNameFormProps) {
@@ -30,6 +31,7 @@ export class RepositoryNameForm extends React.Component<RepositoryNameFormProps,
                     {/* video background */}
                     <video
                         className="card-img-overlay p-0 h-100 w-100"
+                        // no objectFit class in bootstrap
                         style={{ objectFit: 'cover' }}
                         id="video-background" muted={true} autoPlay={true} loop={true}
                     >
@@ -40,7 +42,7 @@ export class RepositoryNameForm extends React.Component<RepositoryNameFormProps,
                             <InputGroup>
                                 <Input value={this.state.repositoryName} onChange={this.handleChange} type="text" placeholder="please enter a github repository name" />
                                 <InputGroupAddon addonType="append">
-                                    <Button>Search</Button> 
+                                    <Button>Search</Button>
                                 </InputGroupAddon>
                             </InputGroup>
                         </FormGroup>
