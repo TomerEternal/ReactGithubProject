@@ -26,7 +26,7 @@ namespace ReactGithubProject.Service.Controllers {
             }
         }
 
-
+        [HttpPost]
         public ActionResult BookmarkRepository(RepositoryModel repositoryModel) {
             if (ModelState.IsValid) {
                 if (!Repositores.ContainsKey(repositoryModel.Url)) {
@@ -39,6 +39,7 @@ namespace ReactGithubProject.Service.Controllers {
             }
         }
 
+        [HttpGet]
         public ActionResult GetBookmarkedRepositories() {
 
             var bookmarks = JsonConvert.SerializeObject(
