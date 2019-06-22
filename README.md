@@ -15,4 +15,4 @@ if a message box appears with the message:
  press "yes" as it is an internal typescript compiler issue and has nothing to do with the code itself.
 ## How modify the react code
  - Edit the react files (located at `project folder/ReactGithubProject.Service/Scripts/src`)
- - open the `ReactGithubProject.Service` folder using the terminal and run the command 'webpack'. the code will transpile and be put in `project folder/Scripts/dist`
+ - open the `ReactGithubProject.Service` folder using the terminal and run the command `webpack`. the code will transpile and be put in `project folder/Scripts/dist`
