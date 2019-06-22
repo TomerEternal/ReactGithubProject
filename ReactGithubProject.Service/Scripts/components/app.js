@@ -28,7 +28,8 @@ var App = /** @class */ (function (_super) {
     App.prototype.render = function () {
         return (React.createElement(React.Fragment, null,
             React.createElement("div", { className: "h-100 w-100 d-flex flex-column" },
-                React.createElement(react_router_dom_1.BrowserRouter, null,
+                React.createElement(react_router_dom_1.BrowserRouter, { basename: "/Home/Index/" },
+                    React.createElement(react_router_dom_1.Redirect, { exact: true, from: "/", to: navbar_item_1.Page.search }),
                     React.createElement(navbar_1.Navbar, null),
                     React.createElement(bookmarked_repositories_context_1.BookmarkedRepositoriesProvider, null,
                         React.createElement(react_router_dom_1.Route, { path: navbar_item_1.Page.search, component: search_1.Search }),

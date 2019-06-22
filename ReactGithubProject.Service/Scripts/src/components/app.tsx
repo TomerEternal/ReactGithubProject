@@ -2,7 +2,7 @@
 import { BookmarkedRepositoriesProvider } from "../contexts/bookmarked-repositories-context";
 import { Search } from "./search";
 import { Bookmarks } from "./bookmarks";
-import { BrowserRouter as BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter as BrowserRouter, Route, Redirect } from "react-router-dom";
 
 
 import { BookmarkingService } from "../infrastructure/bookmarking/BookmarkingService";
@@ -22,7 +22,9 @@ export class App extends React.Component<any, any> {
         return (
             <React.Fragment>
                 <div className="h-100 w-100 d-flex flex-column">
+
                     <BrowserRouter basename="/Home/Index/">
+                        <Redirect exact from="/" to={Page.search} />
                         <Navbar />
                         <BookmarkedRepositoriesProvider>
                             {/* renders the appropriate page based on the currently active page */}

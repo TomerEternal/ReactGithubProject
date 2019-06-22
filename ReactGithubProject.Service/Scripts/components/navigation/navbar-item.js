@@ -15,6 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var react_router_dom_1 = require("react-router-dom");
+var reactstrap_1 = require("reactstrap");
 var Page;
 (function (Page) {
     Page["search"] = "/search/";
@@ -27,9 +28,15 @@ var NavbarItem = /** @class */ (function (_super) {
         return _super.call(this, props) || this;
     }
     NavbarItem.prototype.render = function () {
-        return (React.createElement(react_router_dom_1.NavLink, { to: this.props.page, className: "nav-item", activeClassName: "active" },
-            this.props.text,
-            " ")
+        return (
+        // <NavLink to={this.props.page} className="nav-item" activeClassName="active">{this.props.text} </NavLink>
+        React.createElement(reactstrap_1.NavItem, null,
+            React.createElement(reactstrap_1.NavLink, { tag: react_router_dom_1.NavLink, activeClassName: "active", to: this.props.page }, this.props.text))
+        // <li className={`nav-item ${this.props.page === this.props.activePage ? 'active' : ''}`}>
+        //     <a className="nav-link" onClick={() => this.props.setPage(this.props.page)} href="#">
+        //         {this.props.text}
+        //     </a>
+        // </li>
         // <li>
         //     <NavLink className="nav-item" activeClassName="active" to={this.props.page}>{this.props.text}</NavLink>
         // </li>
