@@ -2,52 +2,34 @@
 import { BookmarkedRepositoriesProvider } from "../contexts/bookmarked-repositories-context";
 import { Search } from "./search";
 import { Bookmarks } from "./bookmarks";
+import { BrowserRouter as BrowserRouter, Route } from "react-router-dom";
 
 
 import { BookmarkingService } from "../infrastructure/bookmarking/BookmarkingService";
 import { RepositoryModel } from "../infrastructure/bookmarking/RepositoryModel";
 import { Page } from "./navigation/navbar-item";
-import { Navbar} from "./navigation/navbar";
+import { Navbar } from "./navigation/navbar";
 
-interface AppState {
-    activePage: Page,
-}  
-
-export class App extends React.Component<any, AppState> {
+export class App extends React.Component<any, any> {
 
 
-    constructor(props: AppState) {
+    constructor(props: any) {
         super(props);
 
-        this.state = {
-            activePage: Page.search,
-        }
-
-    }
-
-
-    setPage = (page: Page) => {
-        this.setState({ activePage: page });
     }
 
     render() {
         return (
             <React.Fragment>
                 <div className="h-100 w-100 d-flex flex-column">
-                    <Navbar setPage={this.setPage} activePage={this.state.activePage} />
-                    <BookmarkedRepositoriesProvider>{(() => {
-
-                        //renders the appropriate page based on the currently active page
-                        switch (this.state.activePage) {
-                            case Page.search:
-                                return <Search />
-                            case Page.bookmarks:
-                                return <Bookmarks />
-                            default:
-                        }
-
-                    })()}
-                    </BookmarkedRepositoriesProvider>
+                    <BrowserRouter basename="/Home/Index/">
+                        <Navbar />
+                        <BookmarkedRepositoriesProvider>
+                            {/* renders the appropriate page based on the currently active page */}
+                            <Route path={Page.search} component={Search} />
+                            <Route path={Page.bookmarks} component={Bookmarks} />
+                        </BookmarkedRepositoriesProvider>
+                    </BrowserRouter >
                     <footer className="mt-auto py-3 bg-white">
                         <div className="container">
                             <span className="text-muted">Made by Tomer H.</span>

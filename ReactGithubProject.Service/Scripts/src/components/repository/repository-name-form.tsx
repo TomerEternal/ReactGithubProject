@@ -32,10 +32,10 @@ export class RepositoryNameForm extends React.Component<RepositoryNameFormProps,
                     <video
                         className="card-img-overlay p-0 h-100 w-100"
                         // no objectFit class in bootstrap
-                        style={{ objectFit: 'cover' }}
+                        style={{ objectFit: 'cover' }} 
                         id="video-background" muted={true} autoPlay={true} loop={true}
                     >
-                        <source src={`videos/earth.mp4`} type="video/mp4" />
+                        <source src={`${window.location.origin}/videos/earth.mp4`} type="video/mp4" />
                     </video>
                     <Form onSubmit={this.handleSubmit}>
                         <FormGroup >

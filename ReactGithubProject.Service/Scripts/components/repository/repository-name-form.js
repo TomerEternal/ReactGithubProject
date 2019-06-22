@@ -38,7 +38,7 @@ var RepositoryNameForm = /** @class */ (function (_super) {
                 React.createElement("video", { className: "card-img-overlay p-0 h-100 w-100", 
                     // no objectFit class in bootstrap
                     style: { objectFit: 'cover' }, id: "video-background", muted: true, autoPlay: true, loop: true },
-                    React.createElement("source", { src: "videos/earth.mp4", type: "video/mp4" })),
+                    React.createElement("source", { src: window.location.origin + "/videos/earth.mp4", type: "video/mp4" })),
                 React.createElement(reactstrap_1.Form, { onSubmit: this.handleSubmit },
                     React.createElement(reactstrap_1.FormGroup, null,
                         React.createElement(reactstrap_1.InputGroup, null,

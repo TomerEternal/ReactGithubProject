@@ -14,10 +14,11 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
+var react_router_dom_1 = require("react-router-dom");
 var Page;
 (function (Page) {
-    Page[Page["search"] = 0] = "search";
-    Page[Page["bookmarks"] = 1] = "bookmarks";
+    Page["search"] = "/search/";
+    Page["bookmarks"] = "/bookmarks/";
 })(Page = exports.Page || (exports.Page = {}));
 //renders a single nav button
 var NavbarItem = /** @class */ (function (_super) {
@@ -26,9 +27,13 @@ var NavbarItem = /** @class */ (function (_super) {
         return _super.call(this, props) || this;
     }
     NavbarItem.prototype.render = function () {
-        var _this = this;
-        return (React.createElement("li", { className: "nav-item " + (this.props.page === this.props.activePage ? 'active' : '') },
-            React.createElement("a", { className: "nav-link", onClick: function () { return _this.props.setPage(_this.props.page); }, href: "#" }, this.props.text)));
+        return (React.createElement(react_router_dom_1.NavLink, { to: this.props.page, className: "nav-item", activeClassName: "active" },
+            this.props.text,
+            " ")
+        // <li>
+        //     <NavLink className="nav-item" activeClassName="active" to={this.props.page}>{this.props.text}</NavLink>
+        // </li>
+        );
     };
     return NavbarItem;
 }(React.Component));

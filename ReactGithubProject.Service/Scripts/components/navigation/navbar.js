@@ -25,8 +25,8 @@ var Navbar = /** @class */ (function (_super) {
         return (React.createElement("nav", { className: "navbar navbar-expand navbar-dark bg-dark" },
             React.createElement("span", { className: "navbar-brand" }, "React Github Project"),
             React.createElement("ul", { className: "navbar-nav" },
-                React.createElement(navbar_item_1.NavbarItem, { text: "Search", page: navbar_item_1.Page.search, activePage: this.props.activePage, setPage: this.props.setPage }),
-                React.createElement(navbar_item_1.NavbarItem, { text: "Bookmarks", page: navbar_item_1.Page.bookmarks, activePage: this.props.activePage, setPage: this.props.setPage }))));
+                React.createElement(navbar_item_1.NavbarItem, { text: "Search", page: navbar_item_1.Page.search }),
+                React.createElement(navbar_item_1.NavbarItem, { text: "Bookmarks", page: navbar_item_1.Page.bookmarks }))));
     };
     return Navbar;
 }(React.Component));
