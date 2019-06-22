@@ -9,7 +9,7 @@ interface RepositoryGalleryItemProps {
     bookmarkedRepositories: RepositoryModel[],
 }
 
-//renders single repository
+//renders a single repository
 export class RepositoryGalleryItem extends React.Component<RepositoryGalleryItemProps, any> {
 
     static contextType = BookmarkedRepositioresContext
@@ -31,6 +31,7 @@ export class RepositoryGalleryItem extends React.Component<RepositoryGalleryItem
         return bookmarkedRepository != null;
     }
 
+    //saves the repository to the bookmarking server
     handleBookmarking = () => {
         this.bookmarkingService.bookmarkRepository(this.props.model)
         this.context.refreshBookmarkedRepositories();

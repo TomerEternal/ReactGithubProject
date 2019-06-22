@@ -17,7 +17,7 @@ interface BookmarkedRepositoriesProviderState{
 }
 
 // a component incharge of managing the bookmarks
-// any components wrapped by this provider will be able the bookmarked repositories thanks to contextAPI
+// any components wrapped by this provider will be have access to the bookmarked repositories via the contextAPI
 export class BookmarkedRepositoriesProvider  extends React.Component<any,BookmarkedRepositoriesProviderState> {
 
     constructor(props: any) {
