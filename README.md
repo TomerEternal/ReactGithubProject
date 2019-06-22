@@ -4,7 +4,7 @@
  1. Pull the repository
  2. Open the folder located at `project folder/ReactGithubProject.Service` with a terminal
  3. Run the command `npm install`
- 4. Open the project located in the project folder with visual studio and build it
+ 4. Open the `.sln` file located in the project folder with visual studio and build it
  5. Run the project via IIS Express (press the play button or F5). 
 
 if a message box appears with the message:
